@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Timer Carousel Example</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .carousel {
+      position: relative;
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      height: 400px;
+    }
+    
+    .slide {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    
+    .slide.active {
+      opacity: 1;
+    }
+    
+    .text {
+      flex-basis: 50%;
+      padding: 20px;
+    }
+    
+    .image {
+      flex-basis: 50%;
+      text-align: center;
+    }
+    
+    .image img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+    
+    .timer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="carousel">
+    <div class="slide active">
+      <div class="text">
+        <h2>Slide 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id elit vestibulum, commodo lorem quis, accumsan arcu. Donec euismod, velit eu lacinia consequat, nibh justo consectetur tellus, non commodo elit turpis ut magna.</p>
+      </div>
+      <div class="image">
+        <img src="slide1.jpg" alt="Slide 1 Image">
+      </div>
+    </div>
+    <div class="slide">
+      <div class="text">
+        <h2>Slide 2</h2>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+      </div>
+      <div class="image">
+        <img src="slide2.jpg" alt="Slide 2 Image">
+      </div>
+    </div>
+    <div class="slide">
+      <div class="text">
+        <h2>Slide 3</h2>
+        <p>Quisque dapibus purus quis dolor molestie tincidunt. Aliquam pulvinar auctor leo, id maximus mi placerat non.</p>
+      </div>
+      <div class="image">
+        <img src="slide3.jpg" alt="Slide 3 Image">
+      </div>
+    </div>
+  </div>
+  
+      <script>
+        const slides = document.querySelectorAll('.slide');
+        const delay = 3000; // Change this value to adjust the delay between slides
+        
+        let currentSlide = 0;
+        
+        function showSlide() {
+          // Hide all slides
+          for (let i = 0; i < slides.length; i++) {
+            slides[i].classList.remove('active');
+          }
+        
+          // Show the current slide
+          slides[currentSlide].classList.add('active');
+        
+          // Increment the current slide index
+          currentSlide++;
+        
+          // If the current slide index is greater than or equal to the number of slides, reset it to 0
+          if (currentSlide >= slides.length) {
+            currentSlide = 0;
+          }
+        
+          // Set a timer to show the next slide
+          setTimeout(showSlide, delay);
+        }
+        
+        showSlide();
+        
+      </script>
+      </body>
+      </html>
+      
